@@ -2,7 +2,6 @@ package cl.ecomarket.api.controller;
 
 import cl.ecomarket.api.model.Producto;
 import cl.ecomarket.api.repository.ProductoRepository;
-import cl.ecomarket.api.services.ProductoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
