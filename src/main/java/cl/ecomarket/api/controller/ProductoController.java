@@ -2,13 +2,17 @@ package cl.ecomarket.api.controller;
 
 import cl.ecomarket.api.model.Producto;
 import cl.ecomarket.api.repository.ProductoRepository;
+import cl.ecomarket.api.services.ProductoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 @RestController
 @RequestMapping("/api/v1/productos")
 public class ProductoController {
@@ -20,14 +24,25 @@ public class ProductoController {
     public List<Producto> obtenerTodos() {
         return productoRepository.findAll();
     }
-
-    @PostMapping
-    public Producto agregarProducto(@RequestBody Producto producto) {
-        return productoRepository.save(producto);
+    @GetMapping("/{id}") 
+    public ResponseEntity<Producto> obtenerProductoPorId(@PathVariable int id) { 
+        Optional<Producto> optionalProducto = productoRepository.findById(id);
+        if (optionalProducto.isPresent()) {
+            return ResponseEntity.ok(optionalProducto.get()); 
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
+ @PostMapping
+public ResponseEntity<Producto> agregarProducto(@RequestBody Producto producto) {
+    if (producto.getId() != 0 && productoRepository.existsById(producto.getId())) { 
+        return new ResponseEntity<>(HttpStatus.CONFLICT); }
+    Producto nuevoProducto = productoRepository.save(producto);
+    return new ResponseEntity<>(nuevoProducto, HttpStatus.CREATED);
+}
     @PutMapping("/{id}")
-    public ResponseEntity<Producto> actualizarProducto(@PathVariable Long id, @RequestBody Producto nuevoProducto) {
+    public ResponseEntity<Producto> actualizarProducto(@PathVariable int id, @RequestBody Producto nuevoProducto) {
         Optional<Producto> optionalProducto = productoRepository.findById(id);
 
         if (optionalProducto.isPresent()) {
@@ -44,7 +59,7 @@ public class ProductoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarProducto(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminarProducto(@PathVariable int id) {
         if (productoRepository.existsById(id)) {
             productoRepository.deleteById(id);
             return ResponseEntity.noContent().build();
@@ -54,7 +69,7 @@ public class ProductoController {
     }
 
     @PatchMapping("/{id}/stock")
-    public ResponseEntity<Producto> actualizarStock(@PathVariable Long id, @RequestParam int cantidad) {
+    public ResponseEntity<Producto> actualizarStock(@PathVariable int id, @RequestParam int cantidad) {
         Optional<Producto> optionalProducto = productoRepository.findById(id);
 
         if (optionalProducto.isPresent()) {
