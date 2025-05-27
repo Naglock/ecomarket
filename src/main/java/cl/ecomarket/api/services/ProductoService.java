@@ -2,7 +2,10 @@ package cl.ecomarket.api.services;
 
 import cl.ecomarket.api.model.Producto;
 import cl.ecomarket.api.repository.ProductoRepository;
+import io.micrometer.core.ipc.http.HttpSender.Response;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,4 +38,5 @@ public class ProductoService {
     public Producto guardarProducto(Producto producto) {
         return productoRepository.save(producto);
     }
+
 }
