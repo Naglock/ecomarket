@@ -13,9 +13,10 @@ import jakarta.persistence.*;
 public class Producto {
     @Id
     ///GeneratedValue(strategy = GenerationType.IDENTITY) para generar los Id´s de forma automatica y sequencial
-    private int id;
+    private Long id;
     private String nombre;
     private String descripcion;
     private int stock;
     private double precio;
+    private Long idTienda;
 }

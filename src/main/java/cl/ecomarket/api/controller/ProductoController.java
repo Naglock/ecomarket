@@ -1,83 +1,36 @@
 package cl.ecomarket.api.controller;
 
 import cl.ecomarket.api.model.Producto;
-import cl.ecomarket.api.repository.ProductoRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import cl.ecomarket.api.services.ProductoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
-@Service
 @RestController
 @RequestMapping("/api/v1/productos")
+@RequiredArgsConstructor
 public class ProductoController {
 
-    @Autowired
-    private ProductoRepository productoRepository;
+    private final ProductoService productoService;
 
     @GetMapping
-    public List<Producto> obtenerTodos() {
-        return productoRepository.findAll();
-    }
-    @GetMapping("/{id}") 
-    public ResponseEntity<Producto> obtenerProductoPorId(@PathVariable int id) { 
-        Optional<Producto> optionalProducto = productoRepository.findById(id);
-        if (optionalProducto.isPresent()) {
-            return ResponseEntity.ok(optionalProducto.get()); 
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public List<Producto> listar() {
+        return productoService.listarProductos();
     }
 
- @PostMapping
-public ResponseEntity<Producto> agregarProducto(@RequestBody Producto producto) {
-    if (producto.getId() != 0 && productoRepository.existsById(producto.getId())) { 
-        return new ResponseEntity<>(HttpStatus.CONFLICT); }
-    Producto nuevoProducto = productoRepository.save(producto);
-    return new ResponseEntity<>(nuevoProducto, HttpStatus.CREATED);
-}
-    @PutMapping("/{id}")
-    public ResponseEntity<Producto> actualizarProducto(@PathVariable int id, @RequestBody Producto nuevoProducto) {
-        Optional<Producto> optionalProducto = productoRepository.findById(id);
-
-        if (optionalProducto.isPresent()) {
-            Producto producto = optionalProducto.get();
-            producto.setNombre(nuevoProducto.getNombre());
-            producto.setDescripcion(nuevoProducto.getDescripcion());
-            producto.setStock(nuevoProducto.getStock());
-            producto.setPrecio(nuevoProducto.getPrecio());
-            productoRepository.save(producto);
-            return ResponseEntity.ok(producto);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping("/{productoId}/stock")
+    public boolean verificarStock(@PathVariable Long productoId, @RequestParam int stock) {
+        return productoService.hayStock(productoId, stock);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarProducto(@PathVariable int id) {
-        if (productoRepository.existsById(id)) {
-            productoRepository.deleteById(id);
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @PostMapping("/{productoId}/descontar")
+    public Producto descontarStock(@PathVariable Long productoId, @RequestParam int stock) {
+        return productoService.descontarStock(productoId, stock);
     }
 
-    @PatchMapping("/{id}/stock")
-    public ResponseEntity<Producto> actualizarStock(@PathVariable int id, @RequestParam int cantidad) {
-        Optional<Producto> optionalProducto = productoRepository.findById(id);
-
-        if (optionalProducto.isPresent()) {
-            Producto producto = optionalProducto.get();
-            producto.setStock(producto.getStock() + cantidad);
-            productoRepository.save(producto);
-            return ResponseEntity.ok(producto);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @PostMapping
+    public Producto guardar(@RequestBody Producto producto) {
+        return productoService.guardarProducto(producto);
     }
 }

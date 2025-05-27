@@ -24,7 +24,8 @@ public class SecurityConfig {
             .headers(headers -> headers.frameOptions(frame -> frame.disable()))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers( "/h2-console/**").permitAll()
-                .requestMatchers("/api/v1/productos/**").hasAnyRole("VENDEDOR", "ADMIN")
+                .requestMatchers("/api/**").hasRole("ADMINISTRADOR_SISTEMA")
+                .requestMatchers("/api/v1/productos/**").hasRole("EMPLEADO_VENTAS")
                 .anyRequest().authenticated()
             )
             .oauth2ResourceServer(oauth2 -> oauth2
@@ -37,7 +38,7 @@ public class SecurityConfig {
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtGrantedAuthoritiesConverter converter = new JwtGrantedAuthoritiesConverter();
-        converter.setAuthoritiesClaimName("authorities"); // El nombre del claim en el JWT
+        converter.setAuthoritiesClaimName("authorities");
         converter.setAuthorityPrefix("");
         JwtAuthenticationConverter jwtConverter = new JwtAuthenticationConverter();
         jwtConverter.setJwtGrantedAuthoritiesConverter(converter);
