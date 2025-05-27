@@ -10,13 +10,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemPedido {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long productoId; // relacionado con Inventario/Ventas
     private int cantidad;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pedido_id")
     @JsonBackReference

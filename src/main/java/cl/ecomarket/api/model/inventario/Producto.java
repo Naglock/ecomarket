@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
+import cl.ecomarket.api.model.tiendas.Tienda;
 
 @Entity
 @Table(name = "productos")
@@ -18,5 +19,7 @@ public class Producto {
     private String descripcion;
     private int stock;
     private double precio;
-    private Long idTienda;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="tienda_id")
+    private Tienda tienda;
 }
