@@ -1,4 +1,4 @@
-package com.ecomarket.ventas.model;
+package cl.ecomarket.api.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 

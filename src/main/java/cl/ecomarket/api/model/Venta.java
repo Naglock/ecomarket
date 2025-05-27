@@ -1,4 +1,4 @@
-package com.ecomarket.ventas.model;
+package cl.ecomarket.api.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
