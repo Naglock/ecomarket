@@ -1,7 +1,8 @@
-package cl.ecomarket.api.repository;
+package cl.ecomarket.api.repository.pedidos;
 
-import cl.ecomarket.api.model.Pedido;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import cl.ecomarket.api.model.pedidos.Pedido;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 }

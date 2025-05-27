@@ -1,4 +1,4 @@
-package cl.ecomarket.api.model;
+package cl.ecomarket.api.model.pedidos;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,7 +1,7 @@
-package cl.ecomarket.api.controller;
+package cl.ecomarket.api.controller.inventario;
 
-import cl.ecomarket.api.model.Producto;
-import cl.ecomarket.api.services.ProductoService;
+import cl.ecomarket.api.model.inventario.Producto;
+import cl.ecomarket.api.services.inventario.ProductoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

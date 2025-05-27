@@ -1,11 +1,9 @@
-package cl.ecomarket.api.services;
+package cl.ecomarket.api.services.inventario;
 
-import cl.ecomarket.api.model.Producto;
-import cl.ecomarket.api.repository.ProductoRepository;
-import io.micrometer.core.ipc.http.HttpSender.Response;
+import cl.ecomarket.api.model.inventario.Producto;
+import cl.ecomarket.api.repository.inventario.ProductoRepository;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

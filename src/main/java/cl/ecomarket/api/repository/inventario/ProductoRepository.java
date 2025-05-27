@@ -1,7 +1,8 @@
-package cl.ecomarket.api.repository;
+package cl.ecomarket.api.repository.inventario;
 
-import cl.ecomarket.api.model.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import cl.ecomarket.api.model.inventario.Producto;
 
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
