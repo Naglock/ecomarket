@@ -1,8 +1,8 @@
-package com.ecomarket.ventas.service;
+package cl.ecomarket.api.services;
 
-import com.ecomarket.ventas.model.DetalleVenta;
-import com.ecomarket.ventas.model.Venta;
-import com.ecomarket.ventas.repository.VentaRepository;
+import cl.ecomarket.api.model.DetalleVenta;
+import cl.ecomarket.api.model.Venta;
+import cl.ecomarket.api.repository.VentaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

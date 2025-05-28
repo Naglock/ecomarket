@@ -1,6 +1,6 @@
-package com.ecomarket.ventas.repository;
+package cl.ecomarket.api.repository;
 
-import com.ecomarket.ventas.model.Venta;
+import cl.ecomarket.api.model.Venta;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
