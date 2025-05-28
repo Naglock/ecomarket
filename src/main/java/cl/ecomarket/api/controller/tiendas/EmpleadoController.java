@@ -22,7 +22,7 @@ public class EmpleadoController {
         return empleadoService.guardarEmpleado(nuevoEmpleado);
     }
     @DeleteMapping("/{id}")
-    public void eliminarEmpleado(@PathVariable int id) {
+    public void eliminarEmpleado(@PathVariable Long id) {
         empleadoService.eliminarEmpleado(id);
     }
     

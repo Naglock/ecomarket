@@ -20,7 +20,7 @@ public class empleadoService {
         }
         return empleadoRepository.save(nuevoEmpleado);
     }
-    public void eliminarEmpleado(int id){
+    public void eliminarEmpleado(Long id){
         empleadoRepository.deleteById(id);
     }
     

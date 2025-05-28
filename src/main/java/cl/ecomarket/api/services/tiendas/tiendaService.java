@@ -23,7 +23,7 @@ public class tiendaService {
         }
         return tiendaRepository.save(nuevaTienda);
     }
-    public void eliminarTienda(int id){
+    public void eliminarTienda(Long id){
         tiendaRepository.deleteById(id);
     }
 

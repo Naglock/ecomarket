@@ -24,7 +24,7 @@ public class TiendaController {
         return tiendaService.guardarTienda(nuevaTienda);
     }
     @DeleteMapping("/{id}")
-    public void eliminarTienda(@PathVariable int id) {
+    public void eliminarTienda(@PathVariable Long id) {
         tiendaService.eliminarTienda(id);
     }
 

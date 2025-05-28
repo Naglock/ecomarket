@@ -14,7 +14,7 @@ import jakarta.persistence.*;
 public class Horario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private DayOfWeek dia;
     private LocalTime horaApertura;
     private LocalTime horaCierre;

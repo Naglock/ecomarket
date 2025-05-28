@@ -4,7 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
+
+import java.util.List;
+
+import cl.ecomarket.api.model.pedidos.ItemPedido;
 import cl.ecomarket.api.model.tiendas.Tienda;
+import cl.ecomarket.api.model.ventas.DetalleVenta;
 
 @Entity
 @Table(name = "productos")
@@ -22,4 +27,8 @@ public class Producto {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="tienda_id")
     private Tienda tienda;
+    @OneToMany(mappedBy = "producto")
+    private List<ItemPedido> itemsPedido;
+    @OneToMany(mappedBy = "producto")
+    private List<DetalleVenta> detallesVenta;
 }

@@ -51,7 +51,7 @@ public class VentaService {
         factura.append("==================\n");
         factura.append("Detalle:\n");
         for (DetalleVenta detalle : venta.getDetalles()) {
-            factura.append("- Producto ID: ").append(detalle.getProductoId())
+            factura.append("- Producto ID: ").append(detalle.getId())
                 .append(" | Cantidad: ").append(detalle.getCantidad())
                 .append(" | Precio Unitario: ").append(detalle.getPrecioUnitario())
                 .append(" | Subtotal: ").append(detalle.getSubtotal()).append("\n");

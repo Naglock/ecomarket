@@ -1,8 +1,8 @@
 package cl.ecomarket.api.services.tiendas;
 
 import cl.ecomarket.api.model.tiendas.Horario;
-import cl.ecomarket.api.repository.tiendas.horarioRepository;
 import cl.ecomarket.api.model.tiendas.Tienda;
+import cl.ecomarket.api.repository.tiendas.horarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +22,12 @@ public class horarioService {
         }
         return horarioRepository.save(nuevoHorario);
     }
-    public void eliminarHorario(int id){
+    public void eliminarHorario(Long id){
         horarioRepository.deleteById(id);
     }
+    
     public List<Horario> obtenerHorariosPorTienda(Tienda tienda){
-        return horarioRepository.findByTiendaId(tienda.getId());
+        return horarioRepository.findByTienda(tienda);
     }
     
 

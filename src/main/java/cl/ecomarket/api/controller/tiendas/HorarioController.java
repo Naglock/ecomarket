@@ -21,24 +21,24 @@ public class HorarioController {
         return horarioService.guardarHorario(nuevoHorario);
     }
     @DeleteMapping("/{id}")
-    public void eliminarHorario(@PathVariable int id) {
+    public void eliminarHorario(@PathVariable Long id) {
         horarioService.eliminarHorario(id);
     }
     @GetMapping("/tienda/{id}")
-    public List<Horario> obtenerHorariosPorTienda(@PathVariable int id) {
+    public List<Horario> obtenerHorariosPorTienda(@PathVariable Long id) {
         Tienda tienda = new Tienda();
         tienda.setId(id);
         return horarioService.obtenerHorariosPorTienda(tienda);
     }
     @PostMapping("/tienda/{id}")
-    public Horario crearHorarioParaTienda(@PathVariable int id, @RequestBody Horario nuevoHorario) {
+    public Horario crearHorarioParaTienda(@PathVariable Long id, @RequestBody Horario nuevoHorario) {
         Tienda tienda = new Tienda();
         tienda.setId(id);
         nuevoHorario.setTienda(tienda);
         return horarioService.guardarHorario(nuevoHorario);
     }
     @DeleteMapping("/tienda/{id}/horario/{horarioId}")
-    public void eliminarHorarioDeTienda(@PathVariable int id, @PathVariable int horarioId) {
+    public void eliminarHorarioDeTienda(@PathVariable Long id, @PathVariable Long horarioId) {
         Tienda tienda = new Tienda();
         tienda.setId(id);
         Horario horario = new Horario();

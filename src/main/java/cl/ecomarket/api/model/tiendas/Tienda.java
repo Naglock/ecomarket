@@ -15,7 +15,8 @@ import java.util.Set;
 
 public class Tienda {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nombre;
     private String direccion;
     private String telefono;

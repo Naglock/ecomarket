@@ -7,8 +7,8 @@ import cl.ecomarket.api.model.tiendas.Empleado;
 
 import java.util.List;
 @Repository
-public interface empleadoRepository extends JpaRepository<Empleado, Integer> {
-    List<Empleado> findByTiendaId(int tiendaId);
+public interface empleadoRepository extends JpaRepository<Empleado, Long> {
+    List<Empleado> findByTiendaId(Long tiendaId);
     List<Empleado> findByCargo(String cargo);
     List<Empleado> findByNombreContaining(String nombre);
     List<Empleado> findByApellidoContaining(String apellido);

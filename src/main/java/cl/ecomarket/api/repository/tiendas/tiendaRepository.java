@@ -6,4 +6,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface tiendaRepository extends JpaRepository<Tienda, Integer> {}
+public interface tiendaRepository extends JpaRepository<Tienda, Long> {}
