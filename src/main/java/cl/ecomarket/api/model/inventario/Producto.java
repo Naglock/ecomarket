@@ -18,7 +18,7 @@ import cl.ecomarket.api.model.ventas.DetalleVenta;
 @AllArgsConstructor
 public class Producto {
     @Id
-    ///GeneratedValue(strategy = GenerationType.IDENTITY) para generar los Id´s de forma automatica y sequencial
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private String descripcion;

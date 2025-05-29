@@ -27,5 +27,5 @@ public class Venta {
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL,orphanRemoval = true)
     @JsonManagedReference
     private List<DetalleVenta> detalles;
-    private boolean devuelta = false;
+    private boolean Devuelta = false;
 }

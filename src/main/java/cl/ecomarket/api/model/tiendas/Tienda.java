@@ -21,8 +21,6 @@ public class Tienda {
     private String direccion;
     private String telefono;
     @OneToMany(mappedBy = "tienda", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Empleado> empleados;
-    @OneToMany(mappedBy = "tienda", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Horario> horarios;
     @OneToMany(mappedBy = "tienda", cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Producto> productos;

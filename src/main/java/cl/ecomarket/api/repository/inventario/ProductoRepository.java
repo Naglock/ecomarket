@@ -4,6 +4,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import cl.ecomarket.api.model.inventario.Producto;
 
-public interface ProductoRepository extends JpaRepository<Producto, Long> {
-
-}
+public interface ProductoRepository extends JpaRepository<Producto, Long> {}

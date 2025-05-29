@@ -14,11 +14,10 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String clienteUsername;
+    private Long clienteId;
     private LocalDate fechaCreacion;
     @Enumerated(EnumType.STRING)
     private EstadoPedido estado;
-
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<ItemPedido> items;
